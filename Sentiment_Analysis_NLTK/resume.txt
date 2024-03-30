@@ -1,0 +1,107 @@
+Capítulo 1: Mineração de textos e classificação
+
+Vamos estudar no curso 4 tópicos:
+- Mineração de textos
+- Mineração de emoções
+- Classificação
+- Classificação em textos
+
+O primeiro módulo vai ser mais teórico e os módulos seguintes serão de mais análises.
+
+Existem diversas formas de obter dados de textos:
+- Livros
+- Jornais
+- Redes Sociais
+- PDFs
+- E-mails
+- Páginas Webs
+
+Os dados de texto são desestruturados ou semi-estruturados. Tornando um pouco mais difícil de trabalhar.
+
+- Texto livre x Texto Formatado
+Texto livre seriam os dados sem estrutura. E o texto formatado seria os dados um pouco mais estruturado, como um json ou xml.
+
+O que posso fazer com textos?
+- Classificação: (recebe um texto como entrada, utiliza um algoritmo classificador, e retorna uma saída)
+    - Classificação de spams (Binário)
+    - Classificador de tópicos (Multirótulos)
+- Agrupamento (Clustering):
+    - Similaridade de textos/strings
+    - Detecção de plágio
+- Extração da informação:
+    - Analisar um texto e extrair informações sobre o texto
+- Associações
+    - Correlação entre palavras (como se fosse uma regra de associação - se existe tal palavra vai existir outra)
+- Casamento de esquemas
+    - Correspondência de semântica
+    - Matcher: a partir de uma pergunta de um usuário, é montada um consulta em SQL (Chat-gpt já faz isso)
+- Recuperação da informação:
+    - Localizar e ranquear documentos relevantes em uma coleção (RAG - LLM)
+- Sumarização de documentos:
+    - Pega um texto, aplica um algoritmo de Sumarização e retorna um resumo desse texto.
+- Abordagens da mineração de textos:
+    - Estatística
+        - Frequência dos termos, ignorando informações semânticas
+    - Processamento de linguagem natural
+        - Interpretação sintática e semântica do texto
+        - Fazer o computador entender a linguagem humana
+
+Mineração de Emoção:
+    - O algoritmo recebe o texto e classifica uma emoção (alegria, tristeza, medo, etc...)
+        - A partir disso, posso fazer um monitoramento de marcas, produtos
+        - Gestão de crises (ver se o nível de insatisfação em redes sociais, por exemplo)
+
+Classificação por Polaridade/Valência
+    - O algoritmo retorna um output da polaridade da emoção (Positivo, Neutro, Negativo)
+
+Classificação por Emoção
+    - O algoritmo retorna um output da emoção em si, baseada nas 6 emoções básicas (Surpresa, Alegria, Tristeza, Medo, Insatisfação, Raiva)
+    - Pode retornar a porcentagem de cada emoção
+    - É mais complexo de determinar do que a polarização
+
+CLASSIFICAÇÃO:
+    - Classificação é um problema de aprendizado supervisionado (pois temos a saída)
+    - Existem as variáveis preditoras/explicativas/independentes e a variável target/dependente
+    - Para construir um algoritmo precisamos de dados históricos
+    - Queremos descobrir o relacionamento entre as variáveis explicativas e a variável target, para isso utilizamos algoritmos de ML
+    para construir esses relacionamentos.
+    - Após a construção do algoritmo, posso aplicar a novos dados e classificar os registros conforme a variável target.
+
+Classificação em texto
+    - Diferentemente da classificação tradicional, aqui não vamos ter as variáveis independentes. Vamos ter apenas o texto como entrada,
+    e construir um vetor de características para tentar predizer a emoção da pessoa.
+    - No caso aqui, vamos transformar os textos em colunas e tentar identificar a classe do texto.
+
+Capítulo 2: Pré-procesamento de Textos
+    Introdução:
+        - NLTK: Natural Language Toolkit
+        - Stop Words
+        - Stemming
+
+    Stopwords devem ser removidas pois podem atrapalhar o aprendizado de um modelo de ML. São palavras que não tem um sentido que vai
+    ajudar no aprendizado.
+    O NLTK tem um recurso padrão para remover stop words, mas eu posso criar novas stopwords caso eu ache necessário para o meu trabalho.
+
+    Stemming serve para extrair o radical de um palavra e ajuda a reduzir a dimensionalidade de um conjunto de dados.
+    Tem que ficar atento pois pode acontecer perdas de informações quando aplicar o stemming.
+
+
+Capítulo 3: Naive Bayes algoritmo
+    - É um algoritmo probabilístico baseado no Teorema de Bayes
+    - É muito utilizado em problemas de classificação binária (spam, emoções)
+    - É construído uma tabela de frequência/probabilidade baseada na variável target, e construída a tabela de frequência para cada
+    variável.
+    - O TREINAMENTO do algoritmo se basea na construção nessa tabela de frequência. E posteriormente, é calculado as probabilidades
+    de pertencer a cada classe.
+    - Após isso, é feito a multiplicação das frequências e obtido um valor de probabilidade.
+    - O algoritmo Naive Bayes, aplica uma correção Laplaciana, para lidar com valores na tabela de frequência = 0, pois se manteve esse
+    valor de 0, a probabilidade seria 0. Então, novos registros são inseridos na tabela de frequência para poder evitar essas probabilidades
+    de 0.
+
+Capítulo 4: Avaliação do algoritmo
+    - Precisamos dividir o conjunto de dados em base de treino e teste, para avaliar a performance do modelo.
+    - A avaliação do algoritmo é feita somente nos dados de testes. Não utilizar nos dados de treinamento pois não é valido.
+    - É sempre importante entender o negócio e alinhar com os resultados esperados com a aplicação do modelo. A aplicação do modelo
+    vai muito além apenas da métrica em si.
+
+
